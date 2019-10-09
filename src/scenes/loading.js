@@ -10,8 +10,7 @@ export class Loading extends Scene {
   }
 
   listenFinish(time) {
-    time > 1000 ? this.finish(Scene.LOADED) : 0;
-    // this.game.canvas.imagesLoaded ? this.finish(Scene.LOADED) : 0;
+    this.game.canvas.imagesLoaded && time > 1000 ? this.finish(Scene.LOADED) : 0;
   }
 
   render(time) {

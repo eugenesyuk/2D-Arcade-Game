@@ -10,10 +10,10 @@ export class Game {
   
     this.canvas = new Canvas(width, height);
     this.canvas.loadImages({
-      orc: 'img/orc.png',
-      player: 'img/player.png',
-      title: 'img/title.jpg', 
-      tiles: 'img/tiles.png'
+      orc: './img/orc.png',
+      player: './img/player.png',
+      title: './img/title.jpg', 
+      tiles: './img/tiles.png'
     });
 
     this.scenes = {
