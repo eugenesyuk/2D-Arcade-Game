@@ -22,19 +22,10 @@ export class Game {
     };
   }
 
-  switchScene(status) {
-    switch(status) {
-      case Scene.LOADED:
-        return this.scenes.menu;
-      default:
-        return this.scenes.menu;
-    }
-  }
-
   frame(time) {
-    if(this.currentScene.status != Scene.WORKING) {
-      this.currentScene = this.switchScene(this.currentScene.status);
-      this.currentScene.init();
+    if(this.currentScene.status === Scene.statuses.finished) {
+      this.currentScene = this.currentScene.nextScene;
+      this.currentScene.start();
     }
 
     this.currentScene.render(time);
@@ -43,7 +34,7 @@ export class Game {
 
   start() {
     this.currentScene = this.scenes.loading;
-    this.currentScene.init();
+    this.currentScene.start();
     requestAnimationFrame(time => this.frame(time));
   }
 }

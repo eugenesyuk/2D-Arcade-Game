@@ -1,22 +1,28 @@
 export class Scene {
   constructor(game) {
     this.game = game;
-    this.status = this.constructor.WORKING;
+    this.status = this.constructor.statuses.waiting;
   }
 
-  static get WORKING()    { return 'WORKING';    }
-  static get LOADED()     { return 'LOADED';     }
-  static get START_GAME() { return 'START_GAME'; }
-  static get GAME_OVER()  { return 'GAME_OVER';  }
-  static get GAME_WIN()   { return 'GAME_WIN';   }
-  static get FINISHED()   { return 'FINISHED';   }
+  static get statuses()  { 
+    return {
+      waiting: 'waiting', 
+      started: 'started', 
+      finished: 'finished'
+    }
+  }
 
   init() {
-    this.status = this.constructor.WORKING;
+    this.status = this.constructor.statuses.waiting;
   }
   
-  finish(status) {
-    this.status = status;
+  start() {
+    this.status = this.constructor.statuses.started;
+  }
+
+  finish(nextScene) {
+    this.nextScene = nextScene;
+    this.status = this.constructor.statuses.finished;
   }
 
   render(time) {}
