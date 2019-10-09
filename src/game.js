@@ -22,13 +22,30 @@ export class Game {
     };
   }
 
+  static get events() {
+    return {
+      game_start: 'game_start',
+      game_over: 'game_over',
+      menu: 'menu'
+    };
+  }
+
+  switchScene() {
+    switch (this.currentScene.nextScene) {
+      case this.constructor.events.menu:
+        return this.scenes.menu;
+    }
+  }
+
   frame(time) {
     if(this.currentScene.status === Scene.statuses.finished) {
-      this.currentScene = this.currentScene.nextScene;
+      this.currentScene = this.switchScene();
       this.currentScene.start();
     }
 
     this.currentScene.render(time);
+    this.currentScene.listenEvents(time);
+  
     requestAnimationFrame(time => this.frame(time));
   }
 

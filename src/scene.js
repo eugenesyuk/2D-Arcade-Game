@@ -9,7 +9,7 @@ export class Scene {
       waiting: 'waiting', 
       started: 'started', 
       finished: 'finished'
-    }
+    };
   }
 
   init() {
@@ -21,9 +21,11 @@ export class Scene {
   }
 
   finish(nextScene) {
-    this.nextScene = nextScene;
     this.status = this.constructor.statuses.finished;
+    this.nextScene = nextScene;
   }
 
   render(time) {}
+
+  listenEvents(time) {}
 }
