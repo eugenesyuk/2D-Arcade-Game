@@ -2,6 +2,8 @@ import { Canvas } from './canvas';
 import { Loading } from './scenes/loading';
 import { Menu } from './scenes/menu';
 import { Scene } from './scene';
+import { Keyboard } from './keyboard';
+import { Level_1 } from './scenes/level_1';
 
 export class Game {
   constructor(args = {}) {
@@ -16,9 +18,14 @@ export class Game {
       tiles: './img/tiles.png'
     });
 
-    this.scenes = {
+    this.keyboard = new Keyboard();
+  }
+
+  get scenes() {
+    return {
       loading: new Loading(this),
-      menu: new Menu(this)
+      menu: new Menu(this),
+      level_1: new Level_1(this)
     };
   }
 
@@ -26,7 +33,8 @@ export class Game {
     return {
       game_start: 'game_start',
       game_over: 'game_over',
-      menu: 'menu'
+      menu: 'menu',
+      level_1: 'level_1'
     };
   }
 
@@ -34,6 +42,8 @@ export class Game {
     switch (this.currentScene.nextScene) {
       case this.constructor.events.menu:
         return this.scenes.menu;
+      case this.constructor.events.level_1:
+        return this.scenes.level_1;
     }
   }
 
