@@ -1,5 +1,4 @@
 import { Scene } from '../scene'
-import { Game } from '../game';
 
 export class Menu extends Scene {
   constructor(game) {
@@ -21,7 +20,8 @@ export class Menu extends Scene {
 
   listenEvents() {
     if(this.keyboard.enter) {
-      this.finish(Game.events.level_1);
+      this.nextScene = this.game.scenes.level_1;
+      this.finish();
     }
   }
 }

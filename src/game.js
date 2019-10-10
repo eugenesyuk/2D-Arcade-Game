@@ -1,8 +1,8 @@
 import { Canvas } from './canvas';
+import { Keyboard } from './keyboard';
+import { Scene } from './scene';
 import { Loading } from './scenes/loading';
 import { Menu } from './scenes/menu';
-import { Scene } from './scene';
-import { Keyboard } from './keyboard';
 import { Level_1 } from './scenes/level_1';
 
 export class Game {
@@ -17,39 +17,19 @@ export class Game {
       title: './img/title.jpg', 
       tiles: './img/tiles.png'
     });
-
+  
     this.keyboard = new Keyboard();
-  }
 
-  get scenes() {
-    return {
+    this.scenes = {
       loading: new Loading(this),
       menu: new Menu(this),
       level_1: new Level_1(this)
-    };
-  }
-
-  static get events() {
-    return {
-      game_start: 'game_start',
-      game_over: 'game_over',
-      menu: 'menu',
-      level_1: 'level_1'
-    };
-  }
-
-  switchScene() {
-    switch (this.currentScene.nextScene) {
-      case this.constructor.events.menu:
-        return this.scenes.menu;
-      case this.constructor.events.level_1:
-        return this.scenes.level_1;
     }
   }
 
   frame(time) {
     if(this.currentScene.status === Scene.statuses.finished) {
-      this.currentScene = this.switchScene();
+      this.currentScene = this.nextScene;
       this.currentScene.start();
     }
 

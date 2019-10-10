@@ -20,9 +20,13 @@ export class Scene {
     this.status = this.constructor.statuses.started;
   }
 
-  finish(nextScene) {
+  finish() {
     this.status = this.constructor.statuses.finished;
-    this.nextScene = nextScene;
+    
+  }
+
+  set nextScene(nextScene) {
+    this.game.nextScene = nextScene;
   }
 
   render(time) {}

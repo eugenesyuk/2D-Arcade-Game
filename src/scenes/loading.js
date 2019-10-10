@@ -1,5 +1,4 @@
 import { Scene } from '../scene';
-import { Game } from '../game';
 
 export class Loading extends Scene {
   constructor(game) {
@@ -13,6 +12,9 @@ export class Loading extends Scene {
   }
 
   listenEvents(time) {
-    this.game.canvas.imagesLoaded && time > 1000 ? this.finish(Game.events.menu) : 0;
+    if(this.game.canvas.imagesLoaded && time > 1000) {
+      this.nextScene = this.game.scenes.menu;
+      this.finish();
+    }
   }
 }

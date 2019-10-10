@@ -1,5 +1,4 @@
 import { Scene } from "../scene";
-import { Game } from '../game';
 
 export class Level_1 extends Scene {
   constructor(game) {
