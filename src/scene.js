@@ -30,6 +30,6 @@ export class Scene {
   }
 
   render(time) {}
-
   listenEvents(time) {}
+  update(time) {}
 }

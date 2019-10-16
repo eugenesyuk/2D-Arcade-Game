@@ -174,7 +174,7 @@ function () {
   }, {
     key: "drawSprite",
     value: function drawSprite(sprite) {
-      this.context.drawImage(this.images[sprite.imageName], sprite.sourceX, sprite.sourceY, sprite.width, sprite.height, sprite.x, sprite.y, sprite.width, sprite.height);
+      this.context.drawImage(this.images[sprite.imageName], sprite.tileX, sprite.tileY, sprite.width, sprite.height, sprite.x, sprite.y, sprite.width, sprite.height);
     }
   }]);
 
@@ -601,7 +601,7 @@ function (_Scene) {
     key: "render",
     value: function render(time) {
       this.game.canvas.fill('#666666');
-      this.game.canvas.print('Loading...', 245, 320);
+      this.game.canvas.drawText('Loading...', 245, 320);
 
       _get(_getPrototypeOf(Loading.prototype), "render", this).call(this, time);
     }
@@ -679,7 +679,7 @@ function (_Scene) {
     key: "render",
     value: function render(time) {
       this.canvas.drawImage('title', 0, 0);
-      this.canvas.print('Press ENTER', 220, 500);
+      this.canvas.drawText('Press ENTER', 220, 500);
 
       _get(_getPrototypeOf(Menu.prototype), "render", this).call(this, time);
     }
@@ -742,20 +742,20 @@ function () {
     value: function getSprite(index) {
       return new _sprite__WEBPACK_IMPORTED_MODULE_0__["Sprite"]({
         imageName: this.imageName,
-        sourceX: this.getSourceX(index),
-        sourceY: this.getSourceY(index),
+        tileX: this.gettileX(index),
+        tileY: this.gettileY(index),
         width: this.spriteWidth,
         height: this.spriteHeight
       });
     }
   }, {
-    key: "getSourceX",
-    value: function getSourceX(index) {
+    key: "gettileX",
+    value: function gettileX(index) {
       return --index * this.spriteWidth % this.imageWidth;
     }
   }, {
-    key: "getSourceY",
-    value: function getSourceY(index) {
+    key: "gettileY",
+    value: function gettileY(index) {
       return Math.trunc(--index * this.spriteWidth / this.imageWidth) * this.spriteHeight;
     }
   }]);
@@ -786,8 +786,8 @@ var Sprite =
 function () {
   function Sprite(_ref) {
     var imageName = _ref.imageName,
-        sourceX = _ref.sourceX,
-        sourceY = _ref.sourceY,
+        tileX = _ref.tileX,
+        tileY = _ref.tileY,
         _ref$width = _ref.width,
         width = _ref$width === void 0 ? 64 : _ref$width,
         _ref$height = _ref.height,
@@ -796,8 +796,8 @@ function () {
     _classCallCheck(this, Sprite);
 
     this.imageName = imageName;
-    this.sourceX = sourceX;
-    this.sourceY = sourceY;
+    this.tileX = tileX;
+    this.tileY = tileY;
     this.width = width;
     this.height = height;
     this.x = 0;

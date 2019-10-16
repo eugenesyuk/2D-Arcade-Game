@@ -54,9 +54,9 @@ export class Canvas {
     this.context.drawImage(this.images[image], x, y);
   }
 
-  drawSprite(sprite) {
-    this.context.drawImage(this.images[sprite.imageName], 
-      sprite.sourceX, sprite.sourceY, sprite.width, sprite.height,
-      sprite.x, sprite.y, sprite.width, sprite.height);
+  drawTile(tile) {
+    this.context.drawImage(this.images[tile.imageName], 
+      tile.tileX, tile.tileY, tile.width, tile.height,
+      tile.canvasX, tile.canvasY, tile.width, tile.height);
   }
 }

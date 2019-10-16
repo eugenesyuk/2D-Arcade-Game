@@ -14,7 +14,7 @@ export class Menu extends Scene {
 
   render(time) {
     this.canvas.drawImage('title', 0, 0);
-    this.canvas.print('Press ENTER', 220, 500);
+    this.canvas.drawText('Press ENTER', 220, 500);
     super.render(time);
   }
 

@@ -7,7 +7,7 @@ export class Loading extends Scene {
 
   render(time) {
     this.game.canvas.fill('#666666');
-    this.game.canvas.print('Loading...', 245, 320);
+    this.game.canvas.drawText('Loading...', 245, 320);
     super.render(time);
   }
 

@@ -35,6 +35,7 @@ export class Game {
 
     this.currentScene.render(time);
     this.currentScene.listenEvents(time);
+    this.currentScene.update(time);
   
     requestAnimationFrame(time => this.frame(time));
   }
